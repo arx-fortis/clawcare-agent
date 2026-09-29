@@ -122,6 +122,17 @@ Audit: <timestamp, actor, change, reason>
 Next work order: <exactly one next step, or none>
 ```
 
+## Connected work-order tools
+
+When the operator has configured the scoped team MCP adapter, use its create,
+inspect, claim, renew, progress and handoff tools to preserve work across sessions.
+See [OPENCLAW_TEAM_BRIDGE.md](OPENCLAW_TEAM_BRIDGE.md) for installation and limits.
+Inspect before claiming or resuming; use returned revisions and session IDs.
+Record evidence after each meaningful step and a handoff before ending a session.
+Do not invent checkpoints, approvals, test results or participant identities.
+The adapter provides coordination only. A claim is not permission to change an
+external system. A submitted handoff remains pending operator review.
+
 ## Human correction protocol
 
 If the user corrects an assumption, acknowledge the correction, preserve the previous evidence, revise the diagnosis, and do not silently continue with the old plan. Record the correction as an audit event.
