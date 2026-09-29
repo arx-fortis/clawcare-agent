@@ -84,3 +84,13 @@ Five tests cover deduplication/persistence, approval/retry, snapshot integrity, 
 No telemetry is sent by this worker. Targets and case evidence stay in SQLite. Protect that directory with operating-system permissions. No secrets should be placed in target URLs or actor labels. No shell repair, destructive reset, chat delivery or cloud account access is implemented.
 
 MIT licensed; see LICENSE. Based on the founder's reusable inspect → diagnose → checkpoint → approve → execute → verify → audit → handoff pattern. No private CRM data or credentials are included.
+
+## Unreleased standalone team foundation
+
+The local development tree additionally includes the attributed handoff engine
+([HANDOFFS.md](HANDOFFS.md)) and loopback credential-authenticated team API
+([TEAM_API.md](TEAM_API.md)). They provide work-order claims, handoff review,
+workspace roles and separate project ledgers. These are development prototypes;
+the tagged release, installed background worker and production accounts are not
+automatically updated. Human signup/login, invitations, hosted UI and external
+tool connectors are not yet implemented.
