@@ -4,6 +4,29 @@ ClawCare watches HTTP health endpoints independently of the monitored OpenClaw G
 
 **Release 0.2.0: working monitoring and ledger; repair is simulation-only.** No API key, model call or third-party Python dependency is required for this worker. The accompanying OpenClaw skill supplies the support-engineer operating contract. Multiplayer, Agent Index reporting and actual Gateway repair are not configured by this package.
 
+## Standalone control plane — development increment, 2026-09-29
+
+Version 5 makes the standalone core the first priority. Discord, OpenClaw and
+other coordination systems are optional adapters. The unreleased `control.py`
+increment performs one real, bounded JSON Boolean repair with checkpointed bytes,
+expiring scoped approval, drift checks, verification, separately approved rollback,
+pause/revocation, crash reconciliation and sanitized handoff export. See
+[CONTROL_PLANE.md](CONTROL_PLANE.md) for commands, evidence and limits.
+
+All 15 tests passed locally on Windows/Python 3.14.7 on 2026-09-29. These are
+isolated fixtures, not production admission or Gateway-recovery evidence. The
+tagged 0.2.0 release and its demo still describe the older monitoring/simulation
+baseline. `clawcare.py repair` remains simulated; `control.py execute` has real
+filesystem effects and requires a dedicated managed directory.
+
+## Supervised background worker — development increment
+
+`supervisor.py` provides single-worker protection, bounded restart/backoff,
+persistent stop requests, and orphan cleanup when its supervisor exits. The
+local suite now has 20 passing tests, including real isolated worker/supervisor
+crashes. See [SUPERVISOR.md](SUPERVISOR.md) for operation, Windows sign-in startup,
+and limits. These newer increments are not included in the tagged 0.2.0 ZIP.
+
 ## Run locally
 
 Install Python 3.11 or newer. Extract this package into a writable directory. From that directory:

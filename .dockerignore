@@ -1,3 +1,6 @@
 *
 !clawcare.py
+!control.py
+!supervisor.py
+!process_lock.py
 !Dockerfile

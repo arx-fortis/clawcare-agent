@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ClawCare MVP: durable monitoring, work orders, audit, approval and recovery."""
 import argparse, json, os, sqlite3, time, urllib.request, urllib.error, uuid
+from process_lock import process_lock, Busy
 from contextlib import contextmanager
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -112,6 +113,15 @@ def cmd(args):
         elif args.command=='once': pass
     if args.command=='once': run_once()
 def main():
+    try:
+        if 'worker' in __import__('sys').argv[1:]:
+            with process_lock(str(Path(DB).resolve())+'.worker.lock'):
+                return entrypoint()
+        return entrypoint()
+    except Busy:
+        raise SystemExit(75)
+
+def entrypoint():
     p=argparse.ArgumentParser(description='ClawCare background recovery MVP'); sub=p.add_subparsers(dest='command',required=True)
     a=sub.add_parser('add'); a.add_argument('url',type=target_url); a.add_argument('--interval',type=positive_interval,default=30)
     sub.add_parser('once'); sub.add_parser('list')
