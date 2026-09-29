@@ -90,9 +90,12 @@ def operator_command(profile_path, request_path):
     if len(raw) > 65536:
         raise ValueError('Request exceeds bounds')
     body = json.loads(raw)
-    if not isinstance(body, dict) or ('project_id' in body and body['project_id'] != bridge.project):
-        raise ValueError('Invalid request or project mismatch')
-    if body.get('operation') not in ('workspace_info', 'project_create', 'member_update'):
+    if not isinstance(body, dict):
+        raise ValueError('Invalid request')
+    administrative = body.get('operation') in ('workspace_info', 'project_create', 'member_update')
+    if not administrative and 'project_id' in body and body['project_id'] != bridge.project:
+        raise ValueError('Project mismatch')
+    if not administrative:
         body['project_id'] = bridge.project
     connection = http.client.HTTPConnection('127.0.0.1', bridge.port, timeout=15)
     try:

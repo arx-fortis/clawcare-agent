@@ -79,6 +79,8 @@ class ConnectTests(unittest.TestCase):
                 self.assertEqual(state['audit_events'][-1]['actor']['player_id'], 'alice')
                 request.write_text(json.dumps({'operation': 'workspace_info'}))
                 self.assertIsInstance(operator_command(root / 'operator.json', request), dict)
+                request.write_text(json.dumps({'operation': 'project_create', 'project_id': 'second', 'name': 'Second project'}))
+                self.assertTrue(operator_command(root / 'operator.json', request)['updated'])
             finally:
                 server.shutdown(); server.server_close(); thread.join()
 
