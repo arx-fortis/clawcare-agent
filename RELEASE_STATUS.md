@@ -13,7 +13,9 @@ Not tested/implemented: actual OpenClaw repair, Gateway state restore, cross-hos
 Official event page checked 2026-09-28: https://luma.com/zhkhsnpa
 Submission deadline extended to September 29, 11:59 PM Pacific; leaderboard snapshot September 30, 11:59 PM Pacific.
 
-- Public MIT release: prepare clean standalone distribution; never publish private runtime history/configuration.
+- Public MIT repository: https://github.com/arx-fortis/clawcare-agent. Clean standalone distribution; private runtime history/configuration was not published.
+- Cross-platform verification: all five tests passed on both GitHub-hosted Windows and Linux, run https://github.com/arx-fortis/clawcare-agent/actions/runs/36519014301.
+- Demonstration: demo/clawcare-mvp-demo.mp4 is a 70-second evidence presentation generated from a real isolated HTTP failure/recovery and worker-restart test. It is not a screen recording or multiplayer deployment. Repair execution is explicitly simulated.
 - OpenClaw 2.0 multiplayer: requires actual configured shared interaction and evidence; not satisfied by the CLI worker.
 - Agent Index: official client https://github.com/plow-pbc/agent-index-client; requires authorized registration identity. Reporting must reflect real usage, never fabricated activity or unrelated agents.
 - Video: at least 60 seconds showing real product operation; tests/simulated actions must be labeled.
