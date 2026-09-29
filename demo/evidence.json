@@ -1,0 +1,63 @@
+{
+  "fixture": "loopback HTTP 503 to 200",
+  "case": "CC-25d271a74e79",
+  "scenes": [
+    [
+      "ClawCare | Background reliability engineer",
+      [
+        "Actual local HTTP fixture run",
+        "Endpoint returns HTTP 503; worker runs independently.",
+        "No API key or model calls are used in this demo."
+      ]
+    ],
+    [
+      "One failure. One durable work order.",
+      [
+        "CC-25d271a74e79",
+        "Status: AWAITING_APPROVAL",
+        "Inspection, work order and approval gate are recorded."
+      ]
+    ],
+    [
+      "Worker restarted. Case preserved.",
+      [
+        "CC-25d271a74e79",
+        "Same SQLite case survived process termination/restart.",
+        "Repeated polling did not create a second open case."
+      ]
+    ],
+    [
+      "Approval is enforced",
+      [
+        "Fresh approval required; simulation is single-use",
+        "No repair action was executed."
+      ]
+    ],
+    [
+      "Simulation is not a repair",
+      [
+        "Approved simulation: external effect = NONE",
+        "Verification still sees HTTP 503.",
+        "Status: RECOVERY_REQUIRED"
+      ]
+    ],
+    [
+      "External recovery verified",
+      [
+        "Fixture was restored externally; worker observed HTTP 200.",
+        "Status: COMPLETED; audit attributes external recovery.",
+        "SQLite ledger snapshot integrity: OK"
+      ]
+    ],
+    [
+      "What ships today",
+      [
+        "Real background monitoring + durable work-order audit",
+        "Single-use simulation approval + verified ledger snapshot",
+        "Still pending: real Gateway repair, multiplayer, Index reporting."
+      ]
+    ]
+  ],
+  "audit": "{'at': '2026-09-29T03:50:10.268294+00:00', 'type': 'DETECTED', 'data': '{\"detail\": \"HTTPError\"}'}\n{'at': '2026-09-29T03:50:10.268390+00:00', 'type': 'INSPECTED', 'data': '{\"observation\": \"HTTPError\", \"target\": \"http://127.0.0.1:64786/health\"}'}\n{'at': '2026-09-29T03:50:10.268438+00:00', 'type': 'WORK_ORDER', 'data': '{\"approval_gate\": \"required before repair\", \"definition_of_done\": \"endpoint healthy after action\", \"id\": \"WO-CC-25d271a74e79\", \"objective\": \"Restore http://127.0.0.1:64786/health\", \"steps\": [\"inspect failure\", \"request approval for repair\", \"execute approved adapter\", \"verify health\", \"record handoff\"]}'}\n{'at': '2026-09-29T03:50:10.268484+00:00', 'type': 'APPROVAL_REQUIRED', 'data': '{\"scope\": \"repair\"}'}\n{'at': '2026-09-29T03:50:13.073779+00:00', 'type': 'APPROVED', 'data': '{\"actor\": \"demo-operator\", \"scope\": \"repair\"}'}\n{'at': '2026-09-29T03:50:13.906842+00:00', 'type': 'BEFORE_STATE', 'data': '{\"detail\": \"HTTPError\", \"target\": \"http://127.0.0.1:64786/health\"}'}\n{'at': '2026-09-29T03:50:13.907218+00:00', 'type': 'EXECUTED', 'data': '{\"adapter\": \"simulation\", \"effect\": \"none\"}'}\n{'at': '2026-09-29T03:50:14.039325+00:00', 'type': 'VERIFIED', 'data': '{\"detail\": \"HTTPError\", \"healthy\": false}'}\n{'at': '2026-09-29T03:50:14.039644+00:00', 'type': 'HANDOFF', 'data': '{\"next_action\": \"human repair or configure a bounded repair adapter\", \"result\": \"RECOVERY_REQUIRED\"}'}\n{'at': '2026-09-29T03:50:14.294164+00:00', 'type': 'HEALTHY_OBSERVED', 'data': '{\"detail\": \"HTTP 200\"}'}\n{'at': '2026-09-29T03:50:14.294626+00:00', 'type': 'VERIFIED', 'data': '{\"detail\": \"HTTP 200\", \"healthy\": true, \"source\": \"monitor\"}'}\n{'at': '2026-09-29T03:50:14.294702+00:00', 'type': 'HANDOFF', 'data': '{\"next_action\": \"none\", \"result\": \"External recovery observed; no repair effect attributed\"}'}",
+  "video_kind": "Rendered evidence from actual fixture run; not a screen recording"
+}
