@@ -136,11 +136,33 @@ class SupervisorTests(unittest.TestCase):
 
     @unittest.skipUnless(os.name=='nt','Windows windowless startup path')
     def test_windowless_supervisor_crash_still_stops_child(self):
+        import ctypes
+        from ctypes import wintypes
+        kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+        kernel.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+        kernel.OpenProcess.restype = wintypes.HANDLE
+        kernel.WaitForSingleObject.argtypes = [wintypes.HANDLE, wintypes.DWORD]
+        kernel.WaitForSingleObject.restype = wintypes.DWORD
+        kernel.CloseHandle.argtypes = [wintypes.HANDLE]
+        kernel.CloseHandle.restype = wintypes.BOOL
         pythonw=str(Path(sys.executable).with_name('pythonw.exe'))
         p=subprocess.Popen([pythonw,str(ROOT/'supervisor.py'),'--db',str(self.db),'run'])
         self.processes.append(p)
         self.wait(lambda:not self.lock_free(str(self.db)+'.worker.lock'))
-        p.kill();p.wait(timeout=10)
+        child_pid=self.wait(lambda:self.supervisor.status()['worker_pid'])
+        # A released file lock can precede final Windows process/SQLite handle
+        # teardown. Hold the actual child handle and wait for process completion
+        # before reopening its WAL, rather than inferring exit from that lock.
+        handle=kernel.OpenProcess(0x00100000, False, child_pid)
+        self.assertTrue(handle, 'Could not observe fixture child process')
+        try:
+            p.kill();p.wait(timeout=10)
+            self.assertEqual(kernel.WaitForSingleObject(handle, 15000), 0,
+                             'Fixture child did not exit after supervisor crash')
+        finally:
+            kernel.CloseHandle(handle)
         self.wait(lambda:self.lock_free(str(self.db)+'.worker.lock'))
+        self.supervisor.request_stop()
+        self.assertTrue(self.supervisor.status()['control_paused'])
 
 if __name__=='__main__':unittest.main()
