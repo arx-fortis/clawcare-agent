@@ -2,30 +2,31 @@
 
 ClawCare watches HTTP health endpoints independently of the monitored OpenClaw Gateway. When a check fails it opens one durable support case, records inspection evidence and a work order, and tracks the case through approval, verification and handoff. Closing chat does not close the worker's cases.
 
-**Release 0.2.0: working monitoring and ledger; repair is simulation-only.** No API key, model call or third-party Python dependency is required for this worker. The accompanying OpenClaw skill supplies the support-engineer operating contract. Multiplayer, Agent Index reporting and actual Gateway repair are not configured by this package.
+**Start here: [User-owned setup](GETTING_STARTED.md).** Connect your existing OpenClaw agent and its own model account, or use the work-order system without AI. No founder API key, shared model account or automatic billing fallback is supplied. The core and connector require no third-party Python dependencies.
+
+Version 0.3.1 adds authenticated local team handoffs, a six-tool MCP adapter and user-owned setup. See [release notes](RELEASE_0.3.1.md). Hosted signup, remote multiplayer deployment, contest usage reporting and real Gateway repair remain unverified or unimplemented. Automated fixtures are not real installs or contest activity.
 
 ## Standalone control plane — development increment, 2026-09-29
 
 Version 5 makes the standalone core the first priority. Discord, OpenClaw and
-other coordination systems are optional adapters. The unreleased `control.py`
+other coordination systems are optional adapters. The `control.py`
 increment performs one real, bounded JSON Boolean repair with checkpointed bytes,
 expiring scoped approval, drift checks, verification, separately approved rollback,
 pause/revocation, crash reconciliation and sanitized handoff export. See
 [CONTROL_PLANE.md](CONTROL_PLANE.md) for commands, evidence and limits.
 
-All 15 tests passed locally on Windows/Python 3.14.7 on 2026-09-29. These are
-isolated fixtures, not production admission or Gateway-recovery evidence. The
-tagged 0.2.0 release and its demo still describe the older monitoring/simulation
-baseline. `clawcare.py repair` remains simulated; `control.py execute` has real
+Tests use isolated fixtures, not production admission or Gateway-recovery evidence.
+The old 0.2.0 demo describes the monitoring/simulation baseline.
+`clawcare.py repair` remains simulated; `control.py execute` has real
 filesystem effects and requires a dedicated managed directory.
 
 ## Supervised background worker — development increment
 
 `supervisor.py` provides single-worker protection, bounded restart/backoff,
 persistent stop requests, and orphan cleanup when its supervisor exits. The
-local suite now has 20 passing tests, including real isolated worker/supervisor
-crashes. See [SUPERVISOR.md](SUPERVISOR.md) for operation, Windows sign-in startup,
-and limits. These newer increments are not included in the tagged 0.2.0 ZIP.
+suite includes real isolated worker/supervisor crashes. See [SUPERVISOR.md](SUPERVISOR.md)
+for operation, Windows sign-in startup, and limits. Use current source or 0.3.0
+for supervision rather than the historical 0.2.0 ZIP.
 
 ## Run locally
 
@@ -77,7 +78,7 @@ Place this folder at `skills/clawcare` inside your OpenClaw agent workspace. The
 python -m unittest discover -s tests -v
 ```
 
-Five tests cover deduplication/persistence, approval/retry, snapshot integrity, input validation, and a real loopback HTTP fixture with worker termination/restart and observed recovery. Fixtures are not evidence of production OpenClaw repair. See `RELEASE_STATUS.md` and `DEMO.md` for evidence and submission limits.
+The suite covers monitoring, checkpointed fixture repairs, supervision, authenticated team handoffs, MCP transport and user-owned setup. Fixtures are not evidence of production OpenClaw repair. See the repository Actions tab for current CI results; `RELEASE_STATUS.md` and `DEMO.md` retain historical release evidence.
 
 ## Privacy and scope
 
@@ -85,12 +86,12 @@ No telemetry is sent by this worker. Targets and case evidence stay in SQLite. P
 
 MIT licensed; see LICENSE. Based on the founder's reusable inspect → diagnose → checkpoint → approve → execute → verify → audit → handoff pattern. No private CRM data or credentials are included.
 
-## Unreleased standalone team foundation
+## Standalone team foundation
 
-The local development tree additionally includes the attributed handoff engine
+The package includes the attributed handoff engine
 ([HANDOFFS.md](HANDOFFS.md)) and loopback credential-authenticated team API
 ([TEAM_API.md](TEAM_API.md)). They provide work-order claims, handoff review,
-workspace roles and separate project ledgers. These are development prototypes;
-the tagged release, installed background worker and production accounts are not
-automatically updated. Human signup/login, invitations, hosted UI and external
-tool connectors are not yet implemented.
+workspace roles and separate project ledgers. These are local prototypes; installed
+background workers and production accounts are not automatically updated. The MCP
+connector is available on main. Human signup/login, invitations, hosted UI and
+external business-tool connectors are not yet implemented.
