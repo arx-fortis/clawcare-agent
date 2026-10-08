@@ -1,5 +1,9 @@
 # Experimental workload protection increment
 
+The next additive demonstrator, [COOPERATIVE_WORKER.md](COOPERATIVE_WORKER.md),
+now governs its own bounded actual file workload. The fixture policy boundaries
+and real-collector limitations below still apply; it is not arbitrary-process protection.
+
 This is an additive, dependency-free review candidate. It extends the offline
 fixture service through `FixtureService.workload_protection()` and the read-only
 `clawcare_workload_status` MCP tool. It does **not** start, kill, pause, or replay a

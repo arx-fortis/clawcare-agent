@@ -10,6 +10,8 @@ Status: experimental review checkpoint, 2026-10-08. **Not launch-ready.**
 - `clawcare_ledger/`: optional same-host scoped lookup/reuse library with evidence freshness, claim deduplication and billing reconciliation. It is not a provider connector, authenticated service, dashboard or distributed database. See [execution contract](LOOKUP_LEDGER.md).
 - `workload_protection.py`: synthetic admission, productive-progress/stall, checkpoint inventory and bounded recovery-decision policy with no process-control effects. `workload_observer.py`: actual bounded read-only Linux host/cgroup observations and a tiny verified-artifact demonstration. Neither supplies an OS memory governor or production recovery adapter. See [policy boundaries](WORKLOAD_PROTECTION.md) and [observer limits](WORKLOAD_OBSERVER.md).
 
+- `cooperative_worker.py` and `cooperative_demo.py`: bounded actual tiny-file work with admission, pause/cancel, checkpoints and independent output reconciliation. Pressure/interruption demonstrations are simulated; real file effects are confined to the new owned workload. This does not adopt or protect arbitrary jobs. See [cooperative worker](COOPERATIVE_WORKER.md).
+
 Source inclusion is additive. The new modules do not silently migrate or share existing runtime databases, policies or credentials. Use fresh, private synthetic directories/databases for evaluation.
 
 ## Pending source reconciliation

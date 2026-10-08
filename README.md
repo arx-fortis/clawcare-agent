@@ -2,7 +2,7 @@
 
 ## Experimental upgrade checkpoint
 
-The original standalone monitoring/control plane remains below. This branch adds a bounded synthetic offline service, optional lookup ledger, and workload protection policies. Start with [upgrade scope and launch gates](UPGRADE_READINESS.md), [fixture service](START_HERE_SERVICE_CANDIDATE.md), and [lookup ledger](LOOKUP_LEDGER.md). These additions are source-level candidates, not a launch or deployment claim. The newer thermostat, Gateway lifecycle, dashboard, and pairing/relay bundle is still pending source reconciliation. Historical release notes and demo remain available.
+The original standalone monitoring/control plane remains below. This branch adds a bounded synthetic offline service, optional lookup ledger, workload protection policies, and a [bounded cooperative tiny-file worker](COOPERATIVE_WORKER.md). Start with [upgrade scope and launch gates](UPGRADE_READINESS.md), [fixture service](START_HERE_SERVICE_CANDIDATE.md), and [lookup ledger](LOOKUP_LEDGER.md). These additions are source-level candidates, not a launch or deployment claim. The newer thermostat, Gateway lifecycle, dashboard, and pairing/relay bundle is still pending source reconciliation. Historical release notes and demo remain available.
 
 
 ClawCare watches HTTP health endpoints independently of the monitored OpenClaw Gateway. When a check fails it opens one durable support case, records inspection evidence and a work order, and tracks the case through approval, verification and handoff. Closing chat does not close the worker's cases.

@@ -373,6 +373,44 @@ class WorkloadProtection:
             self._save(c, task)
             return {'decision': 'CLAIMED_SYNTHETIC_PLAN', 'execute': False, 'action': action}
 
+    def reconcile_verified_action(self, action_id, *, observed_at, output_sha256,
+                                  checkpoint_sha256, output_verified, worker_quiescent,
+                                  no_untracked_effects):
+        """Record independently re-read output without replay or recovery claims.
+
+        Only a trusted owned-workload adapter can establish these assertions.
+        This resolves an ambiguous effect, never grants a new execution or marks
+        a running worker healthy. New work still needs fresh admission/checkpoint
+        verification and the original finite budget.
+        """
+        identifier(action_id); sha(output_sha256); sha(checkpoint_sha256)
+        if output_verified is not True or worker_quiescent is not True or no_untracked_effects is not True:
+            raise ValueError('Explicit independent reconciliation evidence required')
+        with self.core.tx() as c:
+            now, _ = self._now(c)
+            row = c.execute('SELECT body FROM workload_actions WHERE id=?', (action_id,)).fetchone()
+            if row is None:
+                raise ValueError('Unknown action')
+            action = json.loads(row[0])
+            task = self._task(c, action['task_id'])
+            if (not number(observed_at) or not max(action['at'], task['fault_at']) <= observed_at <= now or
+                    now - observed_at > self.limits.verification_max_age or
+                    checkpoint_sha256 != task['checkpoint_sha256'] or
+                    action['status'] == 'NO_EFFECT'):
+                raise ValueError('Reconciliation evidence is stale or conflicting')
+            old = task['completed'].get(action['item_id'])
+            if old is not None and old != output_sha256:
+                raise ValueError('Verified output identity conflict')
+            action.update(status='VERIFIED', last_report_at=now, last_report_observed_at=observed_at,
+                          reconciled_without_replay=True)
+            c.execute('UPDATE workload_actions SET body=? WHERE id=?', (encode(action), action_id))
+            task['completed'][action['item_id']] = output_sha256
+            task['uncertain'] = self._pending(c, task['id'])
+            task['status'] = 'NEEDS_RECONCILIATION' if task['uncertain'] else 'PAUSED'
+            task['worker_quiescent_at'] = observed_at
+            self._save(c, task)
+            return {'status': 'VERIFIED', 'recovered': False, 'replayed': False}
+
     def outcome(self, action_id, outcome, *, observed_at, output_sha256=None,
                 output_verified=False, independent_healthy=False, original_symptom_healthy=False, worker_quiescent=False):
         """Independent output + symptom + subsequent progress are all required.
