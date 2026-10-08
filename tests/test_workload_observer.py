@@ -1,7 +1,7 @@
 import hashlib
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import sys
 import tempfile
 import unittest
@@ -210,6 +210,16 @@ class CollectorTests(unittest.TestCase):
         self.assertFalse(result['synthetic'])
         self.assertEqual('unknown', result['status'])
         self.assertIn('UNSUPPORTED_PLATFORM', result['errors'])
+
+    def test_default_proc_root_windows_separators_remain_nonsynthetic(self):
+        with patch('workload_observer.Path', PureWindowsPath), \
+                patch('workload_observer.sys.platform', 'win32'), \
+                patch('workload_observer._bounded_text') as read:
+            result = LinuxMemoryObserver().collect()
+        self.assertFalse(result['synthetic'])
+        self.assertEqual('unknown', result['status'])
+        self.assertIn('UNSUPPORTED_PLATFORM', result['errors'])
+        read.assert_not_called()
 
     def test_adapter_forwards_unknown_to_clear_existing_evidence(self):
         engine = Mock()

@@ -131,7 +131,8 @@ class LinuxMemoryObserver:
     def __init__(self, proc_root='/proc', clock=time.time):
         self.proc_root = Path(proc_root)
         self.clock = clock
-        self.synthetic = str(self.proc_root) != '/proc'
+        # Normalize separators so Windows does not classify the default as a fixture.
+        self.synthetic = self.proc_root.as_posix() != '/proc'
 
     def collect(self):
         started = time.monotonic()

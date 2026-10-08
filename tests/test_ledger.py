@@ -1,6 +1,7 @@
 import hashlib
 import json
 import multiprocessing
+import os
 import sqlite3
 import tempfile
 import unittest
@@ -246,6 +247,7 @@ class LedgerTests(unittest.TestCase):
         self.assertEqual(result['result_kind'], 'derived_answer')
         self.assertEqual(result['derived_from'], ['artifact:full-page'])
 
+    @unittest.skipUnless(os.name == "posix", "POSIX mode bits do not establish Windows ACLs")
     def test_database_created_private(self):
         self.assertEqual(self.path.stat().st_mode & 0o777, 0o600)
 

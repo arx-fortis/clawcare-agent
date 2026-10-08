@@ -6,15 +6,16 @@
   "local_python": "3.12.14",
   "verification": {
     "command": "python -m unittest discover -s tests -v",
-    "tests_run": 173,
-    "passed": 172,
+    "tests_run": 174,
+    "passed": 173,
     "skipped": 1,
     "skip": "Windows windowless startup path",
     "compileall": "passed",
     "fixture_cli_and_packaging_smoke": "3 passed within root suite",
     "actual_read_only_observer_demo": "3 temporary 4096-byte artifacts independently verified and removed; host memory observed; combined headroom unknown; not memory-governed",
     "diff_whitespace_check": "passed",
-    "limited_private_path_and_key_signature_scan": "no matches in changed files; not security certification"
+    "limited_private_path_and_key_signature_scan": "no matches in changed files; not security certification",
+    "windows_ci_initial": "Initial Windows run exposed a POSIX-mode assertion and default-path classification defect; fixed with explicit ACL caveat and Windows-path regression. See current commit CI for final outcome."
   },
   "source_groups": {
     "baseline": "public standalone MIT baseline and demo preserved",
@@ -43,8 +44,8 @@
     },
     {
       "path": "LOOKUP_LEDGER.md",
-      "sha256": "c8873b356778860f80560ee78646b934b8e1c9c9fff18de6cbef4aef6cc43659",
-      "bytes": 8528
+      "sha256": "7e1e2baacadd0639e991a6af1dbcf3ae669947422bf50f1b4ae75c65fac61974",
+      "bytes": 8720
     },
     {
       "path": "README.md",
@@ -118,8 +119,8 @@
     },
     {
       "path": "tests/test_ledger.py",
-      "sha256": "be996e40a00d1f12e4e8e7d06caa2c5ff4c84969c4dce87c9cce7255f8bc7777",
-      "bytes": 14804
+      "sha256": "54933d7f37594aee13d2ad720cc450c600eab623bae999bc9e072442e5815d55",
+      "bytes": 14908
     },
     {
       "path": "tests/test_upgrade_entrypoints.py",
@@ -128,8 +129,8 @@
     },
     {
       "path": "tests/test_workload_observer.py",
-      "sha256": "6318c560751ae1470e0440b170cd3238133a14c30009365bc60ae1e658e7f4a4",
-      "bytes": 12960
+      "sha256": "fb81a344b84f7e7219321b3a285448d583b340f215e7a7b2b4456db81efedb9f",
+      "bytes": 13504
     },
     {
       "path": "tests/test_workload_protection.py",
@@ -138,8 +139,8 @@
     },
     {
       "path": "workload_observer.py",
-      "sha256": "5d9e76bfaac5dcbc4ab42729cbe9d254097882fda4d37c1066f748b6b427db10",
-      "bytes": 12181
+      "sha256": "35835fee8a5b712b57323062607f082545ec3d46bb024054a3a365bbbbdc8edd",
+      "bytes": 12273
     },
     {
       "path": "workload_protection.py",

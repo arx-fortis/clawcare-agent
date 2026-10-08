@@ -30,7 +30,7 @@ Use a central authenticated service for multiple devices; do not copy SQLite fil
 
 ## Privacy and deployment requirements
 
-New DB files are created mode 0600. Use a private parent directory with normal application backup/retention policy; existing DB permissions are not changed. Host administrators and code with DB access are trusted. This is a logical scoped ledger, not row-level security or a tamper-proof forensic audit system.
+On POSIX, new DB files are created mode 0600. Windows mode bits do not establish owner-only ACLs; configure and verify the containing directory and database ACLs separately before use. This module does not enforce Windows ACLs. Use a private parent directory with normal application backup/retention policy; existing DB permissions are not changed. Host administrators and code with DB access are trusted. This is a logical scoped ledger, not row-level security or a tamper-proof forensic audit system.
 
 Never provide credentials in lookup parameters, IDs, provenance, or errors. The adapter must allowlist non-secret result-affecting parameters and redact upstream content before persistence. Parameters are hashed, not stored, but SHA-256 pseudonyms are **not encryption** and low-entropy values can be guessed. Credentials belong in the existing secret store outside the ledger. Evidence persists only an HTTPS origin and a hash of the source URL; paths, userinfo, query strings, and fragments are omitted. Only opaque artifact references are accepted, so signed/secret URLs cannot enter result references. Origin hostnames and non-secret IDs still reveal metadata and need normal access controls.
 
