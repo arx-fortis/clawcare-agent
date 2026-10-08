@@ -1,3 +1,9 @@
+# Current experimental checkpoint
+
+See [UPGRADE_READINESS.md](UPGRADE_READINESS.md) for current source coverage and open launch gates. The section below is preserved historical release status; its results do not verify these additions or the unavailable newer application bundle.
+
+---
+
 # Release 0.2.0 evidence — 2026-09-28
 
 Implemented: independent Python polling, SQLite durable cases and work orders, one open case per target, real HTTP verification, external recovery closure, per-target scheduling, single-use simulation approval and consistent ledger snapshot.

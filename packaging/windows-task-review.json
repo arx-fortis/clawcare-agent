@@ -1,0 +1,13 @@
+{
+  "status": "review_template_only_not_installable",
+  "task_name": "ClawCare-SYNTHETIC-Service-Candidate",
+  "trigger": "current_user_sign_in_only_after_explicit_setup_approval",
+  "principal": "current_user_least_privilege_no_elevation_no_saved_password",
+  "executable": "@PYTHON_EXECUTABLE@",
+  "arguments": ["@CANDIDATE_DIRECTORY@/fixture_service_supervisor.py", "--root", "@PRIVATE_FIXTURE_ROOT@", "run"],
+  "execution_time_limit_seconds": 900,
+  "allow_parallel_instances": false,
+  "overwrite_existing_task": false,
+  "install_automatically": false,
+  "requirements": ["Review exact source and paths", "Create owner-only Windows ACL on runtime and fixture directories", "Run fixture tests on Windows", "Authorize one bounded fixture policy separately", "Verify stop and reboot behavior separately"]
+}

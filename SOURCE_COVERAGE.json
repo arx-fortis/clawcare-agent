@@ -1,0 +1,151 @@
+{
+  "status": "experimental_source_checkpoint_not_launch_ready",
+  "base_commit": "c40650a052671ca06b57f02c4ea4ebd14b52f9df",
+  "verification_date_utc": "2026-10-08",
+  "local_platform": "Linux",
+  "local_python": "3.12.14",
+  "verification": {
+    "command": "python -m unittest discover -s tests -v",
+    "tests_run": 173,
+    "passed": 172,
+    "skipped": 1,
+    "skip": "Windows windowless startup path",
+    "compileall": "passed",
+    "fixture_cli_and_packaging_smoke": "3 passed within root suite",
+    "actual_read_only_observer_demo": "3 temporary 4096-byte artifacts independently verified and removed; host memory observed; combined headroom unknown; not memory-governed",
+    "diff_whitespace_check": "passed",
+    "limited_private_path_and_key_signature_scan": "no matches in changed files; not security certification"
+  },
+  "source_groups": {
+    "baseline": "public standalone MIT baseline and demo preserved",
+    "fixture_service": "trusted-local-owner synthetic service with four read-only MCP tools",
+    "lookup_ledger": "optional isolated library; no provider or dashboard integration",
+    "workload": "synthetic decision policy plus real read-only Linux observations; no OS enforcement",
+    "packaging": "review templates only"
+  },
+  "pending": [
+    "newer thermostat, Gateway lifecycle, dashboard, pairing and relay source reconciliation",
+    "authenticated remote phone/machine acceptance",
+    "real bounded Gateway and workload recovery",
+    "Windows execution and service installation/reboot validation",
+    "production migrations, security and deployment"
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/test.yml",
+      "sha256": "026fcd7aa0052f7fe500248db372c182a514641124fc56f7a2c5346005ebf98c",
+      "bytes": 484
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "d384cd8d812eb433db1fa26d9542669babd3ce7377c7720f2212d7dc1d92715f",
+      "bytes": 105
+    },
+    {
+      "path": "LOOKUP_LEDGER.md",
+      "sha256": "c8873b356778860f80560ee78646b934b8e1c9c9fff18de6cbef4aef6cc43659",
+      "bytes": 8528
+    },
+    {
+      "path": "README.md",
+      "sha256": "00670b8bc4d49f569cdd53a411e5eedf915d1e5e99d7590760a56b4da6f054e4",
+      "bytes": 7609
+    },
+    {
+      "path": "RELEASE_STATUS.md",
+      "sha256": "5a98214dd1f696ea4dabb22d559a406af0d0344f112d878578c13de8e8f2a68d",
+      "bytes": 3136
+    },
+    {
+      "path": "START_HERE_SERVICE_CANDIDATE.md",
+      "sha256": "ce0614f49f7c463b1aeac35904f8b2c77c1b8d6ca99d534d68124d3dfb5f67dd",
+      "bytes": 9682
+    },
+    {
+      "path": "UPGRADE_READINESS.md",
+      "sha256": "b05dc2042a5fd48463c98f54cb24db65437f2d29f66a753f3219aa75e6d06056",
+      "bytes": 4255
+    },
+    {
+      "path": "WORKLOAD_OBSERVER.md",
+      "sha256": "90bb8896defa2aabef9574f1100482cdd31e12b42f9d39c2e6198154166247d8",
+      "bytes": 4837
+    },
+    {
+      "path": "WORKLOAD_PROTECTION.md",
+      "sha256": "fbee201dc306a0775352e609a2df3361f6be0473a0f2bbfc658a159b13f403f2",
+      "bytes": 9310
+    },
+    {
+      "path": "clawcare_ledger/__init__.py",
+      "sha256": "4e11bb5ec1f078ff18af963bd2ee10cf3974f57658af4cee0582ac4d49d45fd9",
+      "bytes": 246
+    },
+    {
+      "path": "clawcare_ledger/ledger.py",
+      "sha256": "8afe76bfe7eaa773c669523691ca298999ede39bc0dd27bafa72696422cb40db",
+      "bytes": 18934
+    },
+    {
+      "path": "fixture_service.py",
+      "sha256": "3aaf0f2b504ae0eceef918532f6c18e97225b1eaf66ca5d42a27d2972c00093b",
+      "bytes": 26399
+    },
+    {
+      "path": "fixture_service_mcp.py",
+      "sha256": "5dc99ab83a1fca098cc54055b995c20dd185cdc2527d44e0530245a6ad9045e5",
+      "bytes": 4736
+    },
+    {
+      "path": "fixture_service_supervisor.py",
+      "sha256": "bfacc5dbd9e9ff7b37054736c3b89891417f6cc1864c4d6740460a196353c6b7",
+      "bytes": 1750
+    },
+    {
+      "path": "packaging/clawcare-fixture.service.in",
+      "sha256": "14d9ad1ce9cc60d1ac05c9193cec4cd40fd9f9c74d234011030ad6262457130f",
+      "bytes": 652
+    },
+    {
+      "path": "packaging/windows-task-review.json",
+      "sha256": "5c62aab19b05179df74245ea49d3b9d6c80b7f17a531b2fbfd3739c749e0b17b",
+      "bytes": 810
+    },
+    {
+      "path": "tests/test_fixture_service.py",
+      "sha256": "08dcdefd3fd5a5a0f20ebd3111b2bd7d7cf18879c1dac748d2e5165325e05af5",
+      "bytes": 20970
+    },
+    {
+      "path": "tests/test_ledger.py",
+      "sha256": "be996e40a00d1f12e4e8e7d06caa2c5ff4c84969c4dce87c9cce7255f8bc7777",
+      "bytes": 14804
+    },
+    {
+      "path": "tests/test_upgrade_entrypoints.py",
+      "sha256": "ec65e19111e45565a89a91a55616d64c57c767125e1cf530faf84d50bbe06ab1",
+      "bytes": 2425
+    },
+    {
+      "path": "tests/test_workload_observer.py",
+      "sha256": "6318c560751ae1470e0440b170cd3238133a14c30009365bc60ae1e658e7f4a4",
+      "bytes": 12960
+    },
+    {
+      "path": "tests/test_workload_protection.py",
+      "sha256": "42813ac848849332b12e019ef70e4ef51003abeff5f8f6b827c5f22072f4fe3f",
+      "bytes": 19590
+    },
+    {
+      "path": "workload_observer.py",
+      "sha256": "5d9e76bfaac5dcbc4ab42729cbe9d254097882fda4d37c1066f748b6b427db10",
+      "bytes": 12181
+    },
+    {
+      "path": "workload_protection.py",
+      "sha256": "80977dd5708c2f37232a16b5742857e767fa26da4cad60c3892b36e190f21ca2",
+      "bytes": 24555
+    }
+  ],
+  "manifest_scope": "Changed files only, excluding this self-referential manifest. Unchanged blobs and original demo remain in Git history/tree."
+}
