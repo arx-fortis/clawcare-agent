@@ -11,6 +11,10 @@ ClawCare watches HTTP health endpoints independently of the monitored OpenClaw G
 
 Version 0.3.1 adds authenticated local team handoffs, a six-tool MCP adapter and user-owned setup. See [release notes](RELEASE_0.3.1.md). Hosted signup, remote multiplayer deployment, contest usage reporting and real Gateway repair remain unverified or unimplemented. Automated fixtures are not real installs or contest activity.
 
+## Proposed usage and protection requirements
+
+The existing [spending work order](TASK_SPENDING_WORK_ORDER.md) now covers ClawCare's own costs and every supervised task: tokens/credits, compute, Docker/host allocation, RAM and storage, budget admission and safe checkpoints. It also defines a later optional phase for non-secret credential inventory and protected, versioned project assets. These are proposed requirements; the USD $5 pilot is unapproved, Firecrawl remains stopped, and no paid run, credential import or vault/backup activation is authorized.
+
 ## Standalone control plane — development increment, 2026-09-29
 
 Version 5 makes the standalone core the first priority. Discord, OpenClaw and

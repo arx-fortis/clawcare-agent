@@ -129,6 +129,12 @@ Set explicit numeric per-task/root and per-provider budgets, time limits, concur
 
 [TASK_SPENDING_WORK_ORDER.md](TASK_SPENDING_WORK_ORDER.md) provides a relevant accounting design, not an existing universal spending guarantee. Enforcement coverage must be labeled supported, observe-only or unsupported. Never claim account-wide limits when calls can bypass the admission boundary.
 
+### Shared resource and protection accounting
+
+When ClawCare supervises a PolyMind workflow, the expanded [spending and resource contract](TASK_SPENDING_WORK_ORDER.md) covers the full participating roster, tools, agents and shared infrastructure, including coordination overhead. It does not narrow the unified application to coding or transcription. Parent and child tasks inherit the same cost/stop boundary; host/container allocation must not duplicate bills, and capacity holds preserve checkpoints.
+
+Credential references and project-asset provenance may use the separately authorized, later protection phase. No model receives a raw secret merely by joining the roster, and shared context does not widen asset access. ClawCare remains independently usable; the proposed pilot and optional vault/backup integrations are not activated by this design.
+
 ## Coding workflow as one subsystem
 
 When the user task is software implementation, PolyMind may use:

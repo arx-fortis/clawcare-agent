@@ -126,6 +126,12 @@ bounded read-only projection. The collector has separate deterministic parser
 and actual Linux tiny-workload tests. These do not prove real gateway repair,
 transcription resumption, crash-power-loss durability or Windows operation.
 
+## Expanded resource and cost requirements
+
+The proposed [task spending, resources and protection work order](TASK_SPENDING_WORK_ORDER.md#resource-capacity-and-admission) extends future admission to physical RAM, commit/swap, effective container/ancestor limits, pressure, CPU/concurrency, disk quotas/inodes and checkpoint capacity, together with spending reservations. The fixture thresholds above continue to describe existing code only. Do not treat a fixed raw-free-RAM threshold as the production policy or remove current holds without a reviewed replacement.
+
+Future adapters must estimate the next bounded unit, account for competing work and ClawCare overhead, preserve unknown/stale evidence, and checkpoint safely before a supported pause. Capacity samples are observations, not guaranteed allocations. Budget denial must not kill unsaved work, prune storage or restart uncertain paid work. These additions and their acceptance scenarios are not implemented or proven by this documentation update.
+
 ## Release-readiness checklist
 
 Complete these gates before claiming a production release of workload protection:

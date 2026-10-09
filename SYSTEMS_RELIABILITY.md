@@ -82,6 +82,14 @@ A command succeeding is not proof of recovery. Verification must test the origin
 - Record pre-action and post-action state with timing.
 - Add acceptance tests for delay, repeated repair, false health signals, drift, and upstream dependency failure.
 
+## Operating costs and project protection
+
+ClawCare must account for its own operating overhead and all supervised tasks, including provider tokens/credits, infrastructure compute, container allocation, memory pressure and retained storage. Decisions combine current authority, conservative cost exposure and workload-specific resource fit; a fixed free-RAM threshold alone is insufficient. Budget holds preserve work through verified cooperative checkpoints rather than arbitrary process termination.
+
+The expanded [task spending, resources and protection work order](TASK_SPENDING_WORK_ORDER.md) is the proposed implementation contract. It preserves the existing ledger, reconciliation and source-review gates; its USD $5 pilot is unapproved. Firecrawl remains stopped, with saved-receipt or synthetic accounting only.
+
+A later optional phase adds non-secret credential inventory, established encrypted vault adapters and versioned protection/restore checks for code, designs, documents and configuration. No secret import, persistent access or backup rollout is authorized here. Security and provenance evidence must state their limits; neither metadata nor encryption is a legal IP guarantee. These future capabilities do not make external platforms dependencies of standalone ClawCare.
+
 ## Public positioning
 
 Describe ClawCare simply as a **self-regulating reliability and recovery agent for OpenClaw**:

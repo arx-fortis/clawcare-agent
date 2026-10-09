@@ -31,6 +31,14 @@ Before merging those sources: verify the source revision and file manifest, comp
 - [ ] Test production identity/transport, scoped artifacts, backup/retention, migrations and operational alert delivery.
 - [ ] Record platform-specific results for the exact reviewed commit, with skips and unrun stages explicit.
 
+## Spending and resource requirements
+
+[TASK_SPENDING_WORK_ORDER.md](TASK_SPENDING_WORK_ORDER.md) now specifies ClawCare self-overhead and all supervised-task usage: provider tokens/credits/currency, Codespaces/host compute and storage, Docker allocation without duplicate bills, RAM/commit/swap/container limits, disk capacity, joint admission and safe checkpoint/stop behavior. These are documentation requirements, not implemented collectors, an integrated spending dashboard or validated budget enforcement. Preserve existing relevant source and reconcile it before Cursor implementation.
+
+The proposed one-time USD $5 pilot still needs numerical approval; no paid execution or Firecrawl re-enablement follows from this update. Required offline tests include saved-receipt import under STOP, unknown costs, delayed settlement, shared-cost allocation, pressure-aware admission and retained storage after compute stops.
+
+A later optional credential/asset-protection phase requires separate vault/security review, explicit access authority and isolated restore evidence. It must not silently block the current bounded ClawCare setup, nor imply credential access, backup activation, legal IP protection or security certification.
+
 ## Verification
 
 Run `python -m unittest discover -s tests -v` from the repository root. All added module tests are placed in `tests/` so this command and root CI discover them. CI targets Ubuntu and Windows with Python 3.14 and also compiles Python source. Local execution uses isolated temporary fixtures and loopback-only baseline HTTP servers; it does not contact providers, install services, register accounts or deploy anything.
