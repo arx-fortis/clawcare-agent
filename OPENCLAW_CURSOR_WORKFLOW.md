@@ -70,6 +70,10 @@ Checkpoint receipts include run/session identity, work-order revision, last veri
 
 Test outcomes must distinguish pass, fail, skipped and not run. Empty or unavailable CI is not green. Existing regression results do not establish a new bridge, installation, reboot, remote recovery or live workload claim. Do not alter tests merely to conceal a failure.
 
+### Parent availability and reporting
+
+Keep the user-facing dot conversation available while OpenClaw manages the bounded Cursor session. Long-running implementation must not occupy the only control conversation. OpenClaw reports accepted/start, meaningful checkpoint, blocker, approval hold, stop acknowledgement and final evidence promptly; noisy logs remain in the scoped receipt store. Every report includes work-order ID/revision, exact state and next decision. If dot is temporarily unavailable, continue only already-authorized bounded work; persist evidence and stop at the next approval or review gate. Silence never grants new authority. User stop or revised scope takes priority over queued work.
+
 ## 5. Permissions, spending and stopping
 
 Enforce scope outside the prompt where supported: allowlisted repository/workspace, tool and command policy, Cursor-only harness selection and restricted network/data access. Do not claim ACP itself supplies an OS sandbox. If the approved boundary cannot be enforced, remain blocked rather than relying on prose.
