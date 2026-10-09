@@ -141,6 +141,8 @@ This subsystem does not define PolyMind's broader use for research, documents, c
 
 ## Proposed delivery stages and acceptance
 
+**First engineering objective: the participating models collaboratively build PolyMind itself.** Follow [PM-BOOTSTRAP-001](POLYMIND_BOOTSTRAP_WORK_ORDER.md): use actual existing authorized Discord/n8n or connectors for temporary orchestration, inventory real provider access, share versioned task context and capabilities, collect independent architecture/research/task-breakdown contributions, coordinate one plan, and send implementation through OpenClaw → Cursor. A finished PolyMind app is not a prerequisite. Missing providers remain explicit; benchmarks and generic demos come later.
+
 Each stage needs its own authorized implementation work order; none is being provisioned here.
 
 1. **Capability inventory:** verify intended providers, integration routes and consumer/API differences. Produce the coverage matrix, permission needs and costs without claiming untested access.
