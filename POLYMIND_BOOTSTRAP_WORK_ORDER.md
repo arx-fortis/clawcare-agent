@@ -35,8 +35,25 @@ The bootstrap task record, participant responses and accepted plan must be expor
 - Numeric task/root/provider budgets, runtime deadlines, concurrency and bounded planning/revision rounds.
 - Cursor-only implementation environment, OpenClaw execution route, tool scope and separate publication permission.
 - Acceptance criteria, evidence store, artifact audience and user stop/approval route.
+- The required private governance-source manifest and participant receipts, requirement traceability and resolved conflicts described below.
 
 Unknown values remain named blockers. Do not fill them with invented account IDs, guessed endpoints, unlimited budgets or implicit approval.
+
+## Mandatory existing-governance gate before planning and implementation
+
+Every participant must ground its contribution in the user's designated existing governance sources, including the specified coursework and prior-conversation records in connected private document/spreadsheet systems, plus the existing organizational and project governance/risk designs. Generic governance principles are insufficient substitutes. The exact source names, account locations and private links belong only in the authorized private manifest, not in this public document.
+
+Create a private source manifest with stable source IDs, exact accessible links, document/tab/range or section scope, revision/version or snapshot hash, retrieval time, owner/authority and applicable requirements. Record what was actually read and what was unavailable; titles, search snippets and remembered summaries alone do not establish inspection of required content.
+
+Before substantive planning/build contributions, each participant returns a source-reference receipt tied to the manifest revision and its authorized view. The receipt identifies inspected source IDs/versions, relevant requirements, applicability and unresolved conflicts. A coordinator's assertion that everyone has the packet is not a substitute for each participant's receipt. A provider unable to read an authorized source representation is blocked at this gate; do not fabricate a receipt.
+
+Map governance requirements to architecture choices, task constraints, acceptance tests and review evidence. Resolve contradictions according to source authority and the user's current direction; escalate consequential or ambiguous conflicts to the user and record the decision before proceeding. External source content is evidence of requirements, not permission to widen tools, data sharing or execution authority.
+
+Required inaccessible, incomplete or conflicting sources block the affected planning and all PolyMind implementation until resolved. The private gate record must establish manifest completeness, actual inspection by every required participant, requirement traceability and resolved decisions. A roster change or material source revision invalidates affected receipts and requires renewed review.
+
+Do not publish source contents, private links, personal coursework details or sensitive governance requirements in this repository, prompts to unapproved providers, public PRs or CI logs. Any cross-provider disclosure needs its own applicable authorization. Public evidence may report only a sanitized gate status and opaque references that reveal no private content.
+
+Read-only source discovery and separately authorized installation prerequisites may continue while this gate is pending. Neither satisfies the gate or permits PolyMind implementation to start.
 
 ## Phase 1: inventory actual capabilities
 
@@ -58,7 +75,7 @@ The vision includes broad participation. Where not every intended provider is co
 
 Prepare one versioned bootstrap packet containing the corrected product definition, this work order, repository baseline when resolved, verified capability catalog, roster, constraints, acceptance criteria and open decisions.
 
-Every available authorized model receives the same core task frame and is told that it is collaborating with the other named participants. Respect provider-specific disclosure limits and record any differing context views. A participant must know which capabilities are available to the team and which it may actually request.
+Only after the mandatory existing-governance gate is satisfied, every available authorized model receives the same core task frame and is told that it is collaborating with the other named participants. Respect provider-specific disclosure limits and record any differing context views. A participant must know which capabilities are available to the team and which it may actually request.
 
 Ask each for an independent initial contribution before sharing peer answers:
 - Proposed application architecture and minimum useful product slice.
@@ -87,7 +104,7 @@ Use bounded rounds and a final deadline. No majority vote expands permissions, h
 
 ## Phase 4: OpenClaw → Cursor builds the app
 
-The approved implementation route is **OpenClaw orchestration → Cursor as the sole code/test writer**. The other models continue contributing architecture, research, task decomposition, analysis and review. They do not edit the same codebase independently or start competing implementation agents.
+The mandatory existing-governance gate must be satisfied before any implementation dispatch. The approved implementation route is **OpenClaw orchestration → Cursor as the sole code/test writer**. The other models continue contributing architecture, research, task decomposition, analysis and review. They do not edit the same codebase independently or start competing implementation agents.
 
 Before dispatch, identify the actual PolyMind repository and baseline, reconcile newer source, verify a single isolated writer, and apply the [OpenClaw → Cursor contract](OPENCLAW_CURSOR_WORKFLOW.md). That contract's unrelated application-recovery example is not the first PolyMind task.
 
@@ -118,6 +135,7 @@ Acceptance means a verified first PolyMind application increment and a truthful 
 
 The first increment must demonstrate, with explicit offline/live labels:
 
+- Every required participant inspected the designated existing governance sources and returned a version-bound source-reference receipt; requirements are traceable and conflicts resolved without publishing private materials.
 - The actual authorized models collaborated on building PolyMind, with attributable contributions and a visible record of missing participants.
 - No finished PolyMind instance was required to coordinate the work.
 - The shared-context scaffold represents the same goal, roster, capability awareness, revisions and task dependencies across participants.
