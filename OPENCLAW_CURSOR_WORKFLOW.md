@@ -115,7 +115,17 @@ Required behavior:
 
 A disconnected computer cannot be remotely restarted through the same disconnected channel. Recovery depends on the previously authorized local supervisor; otherwise a user must restore it. Connection restoration never restarts a production queue automatically.
 
-A mobile control panel is a later increment: authenticated status, last-seen time, checkpoint, blocked reason, scoped stop/resume approvals and audit receipts. Full remote desktop is an optional integration, deferred. Neither is required for this first orchestration contract.
+The central product purpose is one phone-accessible ClawCare app for monitoring and securely accessing many authorized hosts and their OpenClaw agents. It needs authenticated host/agent selection, health and work-order/checkpoint/cost status, supported remote view or secure handoff, scoped approvals/recovery and audit receipts. Prefer existing authorized secure transport and remote/browser tools; full native desktop control is capability-dependent. The local orchestration increment remains useful, but does not satisfy this central product requirement by itself.
+
+### Mac mini and Windows host adapters
+
+The execution contract targets a shared platform-neutral core with separate macOS / Apple Silicon Mac mini and Windows adapters. The Windows command and Task Scheduler proposal above remain Windows-specific. For macOS, evaluate a reviewed platform-appropriate background agent/service against the actual user-session requirements; no Mac installation, startup grant or compatibility proof is created here. Verify the actual native runtime, Cursor/ACP/tool versions and their supported platform before dispatch; Cursor remains the only code writer.
+
+Track process alive, transport reachable, browser discovered, exact target controllable and application session authenticated separately. Then check authority for the requested operation. Use the existing tool's supported capability discovery and harmless round-trip evidence, not a browser listing or process name as proof of UI control. A phone being connected does not make an unavailable host or unauthenticated app usable.
+
+Protected sign-in, credential entry and OS permission prompts require the supported owner handoff. Denied access remains denied. Persist intentional stop/disconnect and respect sleep/shutdown; never silently change power/security settings or recreate a revoked connection. On an authorized return, reconcile the existing session, checkpoints, uncertain effects and spending before resuming. Do not promise always-online access or native UI control where the current tool cannot provide it.
+
+Use the [platform-specific acceptance matrix](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance) for owner-away, restart/resume, pressure, sign-in, denial and revocation tests. This is documentation for a future Cursor implementation, with no installation, new permission or live test authorized.
 
 ## 8. First Cursor work order: coordinated stale-lock recovery
 
@@ -137,12 +147,12 @@ The task-level spending work order follows as a separate scoped increment. Do no
 ## 9. Launch gates and delivery order
 
 - [ ] Reconcile latest private/application source with this branch; preserve newer dashboard, Gateway and pairing work described in [UPGRADE_READINESS.md](UPGRADE_READINESS.md).
-- [ ] Obtain missing install/auth/access approvals; record the actual Windows Cursor CLI and matched OpenClaw/acpx versions.
+- [ ] Obtain missing install/auth/access approvals; record the actual target OS/architecture, Cursor CLI and matched OpenClaw/acpx versions. Keep the Windows route scoped to Windows and separately verify the planned Mac adapter.
 - [ ] Verify ACP initialization, session identity, permission denial, cancellation and reconnect without code changes or paid tasks unless separately authorized.
 - [ ] Approve one bounded synthetic Cursor work order and establish real single-writer fencing and spending boundaries before dispatch.
 - [ ] Produce and review the recovery implementation's exact commit and platform-specific regression/CI receipts.
 - [ ] Separately review, approve, install and test the independent Commander supervisor.
 - [ ] Separately approve any live provider test, production resume, merge or deployment.
-- [ ] Later: task spending integration, authenticated mobile controls and optional remote-desktop integration.
+- [ ] Deliver central phone fleet monitoring and secure access with authenticated host/agent registry, tenant isolation, current cost/work-order status, supported remote-view/handoff and bounded recovery; verify the full phone-to-host acceptance flow. Task spending integration and each tool/platform adapter retain their own implementation gates.
 
 Design completion means this contract is reviewable in the draft PR. It does not mean the ACP bridge, supervisor, recovery adapter or spending controls have been implemented, installed or operationally validated.

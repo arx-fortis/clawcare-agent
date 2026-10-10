@@ -54,6 +54,14 @@ and start the scheduled task. Alternatively run the documented `start` command
 in a controlled session; `run` alone will
 not undo a stop. Do not delete a database or reset approvals to force restart.
 
+## Planned macOS and platform adapter supervision
+
+Apple Silicon Mac mini support is a proposed extension; no Mac startup installer or unattended-host validation is supplied here. Keep one platform-neutral stop/checkpoint/recovery contract and separate OS startup adapters. A reviewed macOS launchd agent/service is a candidate to evaluate against the actual user-session needs; the Windows Task Scheduler setup above must not be applied to a Mac.
+
+Before any activation, obtain the specific install/autostart/access authority and verify the exact binary/runtime, owner, permissions, working directory, stop latch and removal path. Test login/unlock boundaries, process/host restart, sleep/wake, denied access and safe revocation. Intentional stop or disconnect must survive supervisor restart; it must not trigger automatic reconnection. Do not change sleep/security settings to imply always-online operation.
+
+A live supervisor is only process evidence. Phone-away availability additionally needs a working authorized transport and the actual operation's browser/app control and authenticated session. See [capability distinctions](SYSTEMS_RELIABILITY.md#phone-away-control-and-capability-evidence) and [platform acceptance](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance). This documentation installs or enables nothing.
+
 ## Evidence and remaining limits
 
 Tests kill isolated workers/supervisors, confirm restart and orphan exit, preserve

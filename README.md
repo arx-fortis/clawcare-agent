@@ -1,4 +1,10 @@
-# ClawCare — background reliability work orders
+# ClawCare — OpenClaw fleet monitoring and recovery
+
+## Product direction
+
+**ClawCare's central product goal is one phone-accessible app for monitoring and securely accessing a fleet of authorized computers and the OpenClaw agents running on them.** Mac minis are a primary audience, with Windows and other supported hosts represented through platform adapters. The owner selects a machine and agent, sees health, task/checkpoint state and costs, uses a verified remote-view or secure handoff route, and approves bounded recovery with an audit trail.
+
+This is the proposed product direction, not a claim that the phone app, fleet pairing, native desktop control or unattended Mac support is already implemented. Existing local reliability/work-order behavior remains independently useful. See [fleet and platform design](SYSTEMS_RELIABILITY.md#phone-first-fleet-monitoring-and-secure-access) and [readiness gates](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance).
 
 ## Experimental upgrade checkpoint
 
@@ -14,6 +20,12 @@ Version 0.3.1 adds authenticated local team handoffs, a six-tool MCP adapter and
 ## Proposed usage and protection requirements
 
 The existing [spending work order](TASK_SPENDING_WORK_ORDER.md) now covers ClawCare's own costs and every supervised task: tokens/credits, compute, Docker/host allocation, RAM and storage, budget admission and safe checkpoints. It also defines a later optional phase for non-secret credential inventory and protected, versioned project assets. These are proposed requirements; the USD $5 pilot is unapproved, Firecrawl remains stopped, and no paid run, credential import or vault/backup activation is authorized.
+
+## Planned Mac mini and Windows support
+
+ClawCare is intended to be useful to people running agents on Apple Silicon Mac minis as well as Windows PCs. A platform-neutral core should preserve checkpoints/recovery, task costs/resources, credential metadata and truthful readiness; OS-specific adapters provide the actual collection and control capabilities. Mac compatibility is **planned, not verified**. Existing Linux/Windows fixture results do not establish Mac support.
+
+The central phone-away experience should reuse authorized existing tools and report their verified capabilities, rather than promise an always-online computer or native desktop control. See [platform design](SYSTEMS_RELIABILITY.md#platform-neutral-core-and-host-adapters) and [platform acceptance](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance). This scope update installs nothing and grants no access.
 
 ## Standalone control plane — development increment, 2026-09-29
 

@@ -132,6 +132,12 @@ The proposed [task spending, resources and protection work order](TASK_SPENDING_
 
 Future adapters must estimate the next bounded unit, account for competing work and ClawCare overhead, preserve unknown/stale evidence, and checkpoint safely before a supported pause. Capacity samples are observations, not guaranteed allocations. Budget denial must not kill unsaved work, prune storage or restart uncertain paid work. These additions and their acceptance scenarios are not implemented or proven by this documentation update.
 
+### Platform adapter scope
+
+The future platform-neutral admission contract must support a macOS / Apple Silicon Mac mini adapter and a Windows adapter alongside existing Linux work. Bind measurements to the exact host/VM/container and retain platform-specific meanings. Mac memory pressure, compressed memory and swap must not be substituted with a Linux-only free-RAM calculation; Windows commit/working-set metrics need their own verified mapping. [Apple's memory overview](https://support.apple.com/en-au/guide/activity-monitor/actmntr1004/mac) describes pressure using multiple signals, including swap and cached/wired memory.
+
+No Mac collector or pressure-governed workload is established by this document. Use the [platform acceptance scenarios](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance), including owner-away operation, restart/resume, pressure, sign-in holds, denied permissions and revocation. Keep existing safe unknown/hold behavior until reviewed adapter evidence supports a replacement.
+
 ## Release-readiness checklist
 
 Complete these gates before claiming a production release of workload protection:

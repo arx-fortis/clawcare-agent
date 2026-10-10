@@ -23,11 +23,11 @@ Before merging those sources: verify the source revision and file manifest, comp
 ## Launch gates still open
 
 - [ ] Reconcile the newer application bundle and execute consolidated current-source tests.
-- [ ] Authenticate users and machines, pair/revoke safely, and verify phone access away from the host network.
+- [ ] Deliver the central authenticated phone fleet experience: enroll/pair authorized hosts and OpenClaw agents, enforce tenant/role/target isolation, revoke safely, and verify away-from-host-network status and supported secure access.
 - [ ] Verify supported bounded real Gateway diagnostics and repair against the exact owned instance with current authorization and independent health evidence.
 - [ ] Validate productive-progress telemetry, actual checkpoint/output recovery and cancellation for real workload adapters.
 - [ ] Exercise permissions, expiry, revocation and uncertain effects through offline/disconnected paths; never replay uncertain paid or side-effectful actions automatically.
-- [ ] Validate Linux and Windows installation, startup, stop, crash recovery, reboot, sleep and resource exhaustion. Windows ACL enforcement requires separate work.
+- [ ] Validate each claimed Linux, Windows and planned macOS / Apple Silicon Mac mini target separately for installation, startup, stop, crash recovery, reboot, sleep and resource exhaustion. Windows ACLs and Mac permission/session boundaries require platform-specific evidence.
 - [ ] Test production identity/transport, scoped artifacts, backup/retention, migrations and operational alert delivery.
 - [ ] Record platform-specific results for the exact reviewed commit, with skips and unrun stages explicit.
 
@@ -38,6 +38,36 @@ Before merging those sources: verify the source revision and file manifest, comp
 The proposed one-time USD $5 pilot still needs numerical approval; no paid execution or Firecrawl re-enablement follows from this update. Required offline tests include saved-receipt import under STOP, unknown costs, delayed settlement, shared-cost allocation, pressure-aware admission and retained storage after compute stops.
 
 A later optional credential/asset-protection phase requires separate vault/security review, explicit access authority and isolated restore evidence. It must not silently block the current bounded ClawCare setup, nor imply credential access, backup activation, legal IP protection or security certification.
+
+## Platform readiness and Mac mini acceptance
+
+Product and compatibility expansion, 2026-10-10: the central experience is one phone app for many authorized machines/OpenClaw agents, including Apple Silicon Mac minis and Windows PCs, through [one core with platform adapters](SYSTEMS_RELIABILITY.md#platform-neutral-core-and-host-adapters). Verify the exact OS, architecture, runtime, tool version and session, rather than claiming generic platform parity.
+
+| Target | Evidence currently represented by this branch | Outstanding gate |
+| --- | --- | --- |
+| macOS / Apple Silicon Mac mini | Product requirements only; no Mac run or adapter validation | Native runtime/dependencies, collectors, permissions, background supervision and owner-away acceptance |
+| Windows | Existing synthetic/isolated tests and sign-in startup implementation | Actual authorized-host install/reboot, session/control access, ACLs and representative recovery |
+| Linux / containers | Existing bounded read-only observations and isolated cooperative fixtures | Target-specific collection/control coverage and representative workload/host recovery |
+| Central phone fleet experience | Product requirement and proposed authenticated registry/control contract | Host/agent pairing, tenant isolation, chosen secure tool, exact host/session, permissions, away-from-network behavior and safe revocation |
+
+No current CI result should be labeled a Mac pass: this branch's configured matrix remains Ubuntu and Windows. A generic Python test pass also cannot establish native UI control, background access or an authenticated provider session.
+
+Required future adapter acceptance, first with synthetic faults and then only on an explicitly authorized test host:
+
+1. **Owner away and fleet selection:** from the approved phone app, select an authorized host and exact OpenClaw agent, inspect fresh health, work-order/checkpoint state and costs, request the supported remote view or secure user-authentication handoff, approve a bounded recovery, and independently verify the resulting checkpoint/output before reporting success. Unsupported native/browser actions produce an accurate blocker. Do not equate process liveness, browser discovery, control capability or session authentication.
+2. **Restart and login boundary:** verify one exact supervisor/worker, durable stop/restart ceilings and preserved state after controlled process and host restart. Login/unlock requirements remain visible; no promise of pre-login operation or silent security bypass.
+3. **Checkpoint resume:** after an authorized disconnect/reconnect or restart, verify the last durable checkpoint and output inventory, preserve completed/draft work, reconcile pending effects and resume only permitted missing units. Duplicate delivery cannot spawn competing workers or rebill an uncertain unit.
+4. **Resource pressure:** workload-specific Mac memory/pressure/swap and disk evidence, and Windows-equivalent supported metrics, drive bounded admission. Missing/stale measurements remain unknown; low raw free RAM alone is not a stop criterion. Preserve sufficient checkpoint capacity and pause safely.
+5. **Sign-in prompt:** an expired browser/provider session becomes an authentication hold with a supported secure user handoff. No credential copying from another session, repeated blind login or claim that a listed browser is authenticated.
+6. **Denied permissions:** deny required screen, accessibility, filesystem or tool permissions in a controlled fixture; the exact affected capability remains blocked and no alternate route bypasses denial. Unaffected read-only status may remain available only within its permissions.
+7. **Safe revocation:** revoke task or connector authority; deny new dispatch, preserve checkpoints and show unresolved in-flight effects. Stale phone controls, worker retries and background startup cannot resurrect revoked or intentionally stopped work.
+8. **Intentional sleep and disconnect:** deliberate stop, sleep/shutdown and removed connectivity remain respected across wake/restart. No unauthorized wake policy, keep-awake setting or autostart is introduced. Recovery status must distinguish reconnect from authorized task resume.
+9. **Audit and privacy:** phone, host and adapter events correlate to one task/run without publishing secrets, private source paths or credentials. Unavailable collectors/control routes and skipped platform tests remain visible.
+10. **Scoped workflow prerequisites:** a user-specific ingestion-before-reply dependency blocks only that user's affected workflow; it cannot prevent unrelated users from setting up or using ClawCare.
+11. **Multiple hosts and tenant isolation:** two authorized machines/agents remain distinct in the same phone app; selecting one never sends a command or approval to another. Unpaired devices, other tenants, removed roles, stale host selections and replayed approvals are rejected. Pairing/revocation cannot be inferred from discovery or connectivity.
+12. **Gateway, credential and handoff scope:** gateway management targets the exact authorized instance; credential metadata does not expose API keys or grant vault access; recovery and handoff receipts preserve task ownership, authority and independent verification across the phone/host boundary.
+
+Return evidence for the exact commit and hardware/OS/tool combination, including passes, failures, skips and unrun stages. These are acceptance requirements only. No Mac access, installation, service registration, permission grant, paid test, merge or deployment is authorized by this update; Cursor remains the sole implementation writer.
 
 ## Verification
 

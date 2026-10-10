@@ -92,6 +92,12 @@ Suggested event kinds: request_planned, reservation_held, dispatch_intent, provi
 
 Asynchronous jobs hold reservations until terminal billing evidence or a reviewed reconciliation decision establishes the remaining exposure. Job completion alone may precede final billing. Use bounded polling/backoff and separate poll charges when billable. Stale jobs enter needs-reconciliation, not automatically refunded/free. Cancellation is requested and then confirmed separately; cancelled jobs may still incur charges. An uncertain submission is never blindly resubmitted. Use provider idempotency when supported and disclose its limits.
 
+## Platform-neutral accounting and capability scope
+
+The same task/root ledger, spending policy, credential metadata and checkpoint contracts must apply on Apple Silicon Mac minis, Windows PCs and supported Linux/container targets. Platform adapters supply their own verified measurements and control capabilities; missing macOS or Windows data cannot be filled with an unrelated Linux observation. Record OS/architecture, adapter version, exact host/VM/container scope, permission state and freshness with each measurement. Keep platform-specific metrics explicit rather than claiming identical memory/commit semantics.
+
+The [Mac mini and Windows readiness contract](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance) also separates process liveness, reachable transport, discovered browser, controllable target, authenticated session and authorized operation. Phone access grants no additional secret or asset access. Respect owner-away sign-in/permission holds, intentional disconnect/sleep and revoked authority. These adapters remain proposed; the existing USD $5 pilot and Firecrawl STOP are unchanged and no Mac provisioning is authorized.
+
 ## Resource capacity and admission
 
 Resource observations complement spending controls; RAM and disk pressure cannot be inferred from a credit balance. Extend the existing [workload policy](WORKLOAD_PROTECTION.md) and [read-only observer](WORKLOAD_OBSERVER.md) through reviewed adapters without misrepresenting their present implementation.
