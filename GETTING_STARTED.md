@@ -6,6 +6,12 @@ Connect an existing OpenClaw agent when you want model-assisted work. That agent
 uses its existing provider and billing account; ClawCare does not supply a key,
 proxy requests to a founder account, or fall back to one.
 
+## Platform expectations
+
+The product goal is one phone-accessible ClawCare app for a fleet of authorized computers and OpenClaw agents. Apple Silicon Mac mini and Windows users are intended audiences, with a shared ClawCare core and separate host adapters. macOS compatibility and phone-away control are currently planned requirements, not verified installation or native-UI support. The local commands below describe existing behavior; the Windows startup script is not a Mac installer. See [platform readiness](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance) for the actual evidence and remaining tests.
+
+Future setup should check the selected host, runtime, resource collector, existing remote/browser tool and authenticated session before offering controls. Any required sign-in, secret entry or OS permission uses a user handoff. Denied access, deliberate disconnect and sleep remain respected; this guide does not authorize new grants, autostart or power-setting changes. User-specific source-ingestion prerequisites belong to that user's workflow, not general ClawCare installation.
+
 ## 1. Create a private workspace
 
 Install Python 3.11+ and download this repository. From the package directory:

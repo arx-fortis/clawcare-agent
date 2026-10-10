@@ -5,3 +5,8 @@ checkpoints/
 .env
 *.log
 *.lock
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+.venv/

@@ -1,0 +1,174 @@
+{
+  "status": "experimental_source_checkpoint_not_launch_ready",
+  "base_commit": "c40650a052671ca06b57f02c4ea4ebd14b52f9df",
+  "verification_date_utc": "2026-10-08",
+  "local_platform": "Linux",
+  "local_python": "3.12.14",
+  "verification": {
+    "command": "python -m unittest discover -s tests -v",
+    "tests_run": 204,
+    "passed": 203,
+    "skipped": 1,
+    "skip": "Windows windowless startup path",
+    "compileall": "passed",
+    "fixture_cli_and_packaging_smoke": "3 passed within root suite",
+    "actual_read_only_observer_demo": "3 temporary 4096-byte artifacts independently verified and removed; host memory observed; combined headroom unknown; not memory-governed",
+    "diff_whitespace_check": "passed",
+    "limited_private_path_and_key_signature_scan": "no matches in changed files; not security certification",
+    "windows_ci_initial": "Initial Windows run exposed a POSIX-mode assertion and default-path classification defect; fixed with explicit ACL caveat and Windows-path regression. See current commit CI for final outcome.",
+    "cooperative_demo": "3 bounded real file units verified; simulated pressure blocked next unit; simulated interruption reconciled without rewriting; actual unknown capacity blocked zero-output live branch; temporary roots removed; no real OOM/power-loss claim"
+  },
+  "source_groups": {
+    "baseline": "public standalone MIT baseline and demo preserved",
+    "fixture_service": "trusted-local-owner synthetic service with four read-only MCP tools",
+    "lookup_ledger": "optional isolated library; no provider or dashboard integration",
+    "workload": "synthetic decision policy plus real read-only Linux observations; no OS enforcement",
+    "packaging": "review templates only",
+    "cooperative_worker": "actual bounded owned tiny-file workload with admission/pause/cancel/checkpoint/reconciliation; simulated pressure/interruption; no arbitrary-job adapter"
+  },
+  "pending": [
+    "newer thermostat, Gateway lifecycle, dashboard, pairing and relay source reconciliation",
+    "authenticated remote phone/machine acceptance",
+    "real bounded Gateway and workload recovery",
+    "Windows execution and service installation/reboot validation",
+    "production migrations, security and deployment"
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/test.yml",
+      "sha256": "026fcd7aa0052f7fe500248db372c182a514641124fc56f7a2c5346005ebf98c",
+      "bytes": 484
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "d384cd8d812eb433db1fa26d9542669babd3ce7377c7720f2212d7dc1d92715f",
+      "bytes": 105
+    },
+    {
+      "path": "COOPERATIVE_WORKER.md",
+      "sha256": "755024ca57054197cbbd2138751ea859d19d4c8f20837804d2fe4337d66f6511",
+      "bytes": 7956
+    },
+    {
+      "path": "LOOKUP_LEDGER.md",
+      "sha256": "7e1e2baacadd0639e991a6af1dbcf3ae669947422bf50f1b4ae75c65fac61974",
+      "bytes": 8720
+    },
+    {
+      "path": "README.md",
+      "sha256": "bac12b32d4c66343750df6838a38b2504bcde35d38c86453b71c1f4c8c441c9d",
+      "bytes": 7674
+    },
+    {
+      "path": "RELEASE_STATUS.md",
+      "sha256": "5a98214dd1f696ea4dabb22d559a406af0d0344f112d878578c13de8e8f2a68d",
+      "bytes": 3136
+    },
+    {
+      "path": "START_HERE_SERVICE_CANDIDATE.md",
+      "sha256": "ce0614f49f7c463b1aeac35904f8b2c77c1b8d6ca99d534d68124d3dfb5f67dd",
+      "bytes": 9682
+    },
+    {
+      "path": "UPGRADE_READINESS.md",
+      "sha256": "656efc9100124d27810f43c3f44462c5132f37ee5ab22c96148904220c123c83",
+      "bytes": 4626
+    },
+    {
+      "path": "WORKLOAD_OBSERVER.md",
+      "sha256": "90bb8896defa2aabef9574f1100482cdd31e12b42f9d39c2e6198154166247d8",
+      "bytes": 4837
+    },
+    {
+      "path": "WORKLOAD_PROTECTION.md",
+      "sha256": "b339fdcee8a57a08da8d71812859f825749e42fa47e0a80ea25a94c4bfc2769b",
+      "bytes": 9561
+    },
+    {
+      "path": "clawcare_ledger/__init__.py",
+      "sha256": "4e11bb5ec1f078ff18af963bd2ee10cf3974f57658af4cee0582ac4d49d45fd9",
+      "bytes": 246
+    },
+    {
+      "path": "clawcare_ledger/ledger.py",
+      "sha256": "8afe76bfe7eaa773c669523691ca298999ede39bc0dd27bafa72696422cb40db",
+      "bytes": 18934
+    },
+    {
+      "path": "cooperative_demo.py",
+      "sha256": "446c5ce720be6e7aa32bfaed05e12d9d6c57da8aa9e3c8d9fd51996d74d40252",
+      "bytes": 4142
+    },
+    {
+      "path": "cooperative_worker.py",
+      "sha256": "d51b5b0ecf6348906598f6fef9893e3cfcea37e21a1dbf28ac9b1a62e83c0833",
+      "bytes": 21251
+    },
+    {
+      "path": "fixture_service.py",
+      "sha256": "3aaf0f2b504ae0eceef918532f6c18e97225b1eaf66ca5d42a27d2972c00093b",
+      "bytes": 26399
+    },
+    {
+      "path": "fixture_service_mcp.py",
+      "sha256": "5dc99ab83a1fca098cc54055b995c20dd185cdc2527d44e0530245a6ad9045e5",
+      "bytes": 4736
+    },
+    {
+      "path": "fixture_service_supervisor.py",
+      "sha256": "bfacc5dbd9e9ff7b37054736c3b89891417f6cc1864c4d6740460a196353c6b7",
+      "bytes": 1750
+    },
+    {
+      "path": "packaging/clawcare-fixture.service.in",
+      "sha256": "14d9ad1ce9cc60d1ac05c9193cec4cd40fd9f9c74d234011030ad6262457130f",
+      "bytes": 652
+    },
+    {
+      "path": "packaging/windows-task-review.json",
+      "sha256": "5c62aab19b05179df74245ea49d3b9d6c80b7f17a531b2fbfd3739c749e0b17b",
+      "bytes": 810
+    },
+    {
+      "path": "tests/test_cooperative_worker.py",
+      "sha256": "dcc61ca1bddab8fb4361abba0b4c398361e7eb716fe54ce6b289271f9619c3a6",
+      "bytes": 18825
+    },
+    {
+      "path": "tests/test_fixture_service.py",
+      "sha256": "08dcdefd3fd5a5a0f20ebd3111b2bd7d7cf18879c1dac748d2e5165325e05af5",
+      "bytes": 20970
+    },
+    {
+      "path": "tests/test_ledger.py",
+      "sha256": "54933d7f37594aee13d2ad720cc450c600eab623bae999bc9e072442e5815d55",
+      "bytes": 14908
+    },
+    {
+      "path": "tests/test_upgrade_entrypoints.py",
+      "sha256": "ec65e19111e45565a89a91a55616d64c57c767125e1cf530faf84d50bbe06ab1",
+      "bytes": 2425
+    },
+    {
+      "path": "tests/test_workload_observer.py",
+      "sha256": "fb81a344b84f7e7219321b3a285448d583b340f215e7a7b2b4456db81efedb9f",
+      "bytes": 13504
+    },
+    {
+      "path": "tests/test_workload_protection.py",
+      "sha256": "42813ac848849332b12e019ef70e4ef51003abeff5f8f6b827c5f22072f4fe3f",
+      "bytes": 19590
+    },
+    {
+      "path": "workload_observer.py",
+      "sha256": "35835fee8a5b712b57323062607f082545ec3d46bb024054a3a365bbbbdc8edd",
+      "bytes": 12273
+    },
+    {
+      "path": "workload_protection.py",
+      "sha256": "77e39bb4aa8fc6e22d1e68a77fffc99a39861c0fea917495f8e360413176711f",
+      "bytes": 26998
+    }
+  ],
+  "manifest_scope": "Changed files only, excluding this self-referential manifest. Unchanged blobs and original demo remain in Git history/tree."
+}

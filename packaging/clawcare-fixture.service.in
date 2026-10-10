@@ -1,0 +1,22 @@
+# REVIEW TEMPLATE ONLY. Do not install before approving exact paths and scope.
+# Intended as a non-root user unit; all placeholders must be replaced deliberately.
+[Unit]
+Description=ClawCare synthetic fixture service candidate
+
+[Service]
+Type=simple
+WorkingDirectory=@CANDIDATE_DIRECTORY@
+ExecStart=@PYTHON_EXECUTABLE@ @CANDIDATE_DIRECTORY@/fixture_service_supervisor.py --root @PRIVATE_FIXTURE_ROOT@ run
+Restart=on-failure
+RestartSec=10
+RuntimeMaxSec=900
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=@PRIVATE_FIXTURE_ROOT@
+RestrictAddressFamilies=AF_UNIX
+UMask=0077
+
+[Install]
+WantedBy=default.target

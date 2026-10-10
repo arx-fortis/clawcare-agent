@@ -1,10 +1,31 @@
-# ClawCare — background reliability work orders
+# ClawCare — OpenClaw fleet monitoring and recovery
+
+## Product direction
+
+**ClawCare's central product goal is one phone-accessible app for monitoring and securely accessing a fleet of authorized computers and the OpenClaw agents running on them.** Mac minis are a primary audience, with Windows and other supported hosts represented through platform adapters. The owner selects a machine and agent, sees health, task/checkpoint state and costs, uses a verified remote-view or secure handoff route, and approves bounded recovery with an audit trail.
+
+This is the proposed product direction, not a claim that the phone app, fleet pairing, native desktop control or unattended Mac support is already implemented. Existing local reliability/work-order behavior remains independently useful. See [fleet and platform design](SYSTEMS_RELIABILITY.md#phone-first-fleet-monitoring-and-secure-access) and [readiness gates](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance).
+
+## Experimental upgrade checkpoint
+
+The original standalone monitoring/control plane remains below. This branch adds a bounded synthetic offline service, optional lookup ledger, workload protection policies, and a [bounded cooperative tiny-file worker](COOPERATIVE_WORKER.md). Start with [upgrade scope and launch gates](UPGRADE_READINESS.md), [fixture service](START_HERE_SERVICE_CANDIDATE.md), and [lookup ledger](LOOKUP_LEDGER.md). These additions are source-level candidates, not a launch or deployment claim. The newer thermostat, Gateway lifecycle, dashboard, and pairing/relay bundle is still pending source reconciliation. Historical release notes and demo remain available.
+
 
 ClawCare watches HTTP health endpoints independently of the monitored OpenClaw Gateway. When a check fails it opens one durable support case, records inspection evidence and a work order, and tracks the case through approval, verification and handoff. Closing chat does not close the worker's cases.
 
 **Start here: [User-owned setup](GETTING_STARTED.md).** Connect your existing OpenClaw agent and its own model account, or use the work-order system without AI. No founder API key, shared model account or automatic billing fallback is supplied. The core and connector require no third-party Python dependencies.
 
 Version 0.3.1 adds authenticated local team handoffs, a six-tool MCP adapter and user-owned setup. See [release notes](RELEASE_0.3.1.md). Hosted signup, remote multiplayer deployment, contest usage reporting and real Gateway repair remain unverified or unimplemented. Automated fixtures are not real installs or contest activity.
+
+## Proposed usage and protection requirements
+
+The existing [spending work order](TASK_SPENDING_WORK_ORDER.md) now covers ClawCare's own costs and every supervised task: tokens/credits, compute, Docker/host allocation, RAM and storage, budget admission and safe checkpoints. It also defines a later optional phase for non-secret credential inventory and protected, versioned project assets. These are proposed requirements; the USD $5 pilot is unapproved, Firecrawl remains stopped, and no paid run, credential import or vault/backup activation is authorized.
+
+## Planned Mac mini and Windows support
+
+ClawCare is intended to be useful to people running agents on Apple Silicon Mac minis as well as Windows PCs. A platform-neutral core should preserve checkpoints/recovery, task costs/resources, credential metadata and truthful readiness; OS-specific adapters provide the actual collection and control capabilities. Mac compatibility is **planned, not verified**. Existing Linux/Windows fixture results do not establish Mac support.
+
+The central phone-away experience should reuse authorized existing tools and report their verified capabilities, rather than promise an always-online computer or native desktop control. See [platform design](SYSTEMS_RELIABILITY.md#platform-neutral-core-and-host-adapters) and [platform acceptance](UPGRADE_READINESS.md#platform-readiness-and-mac-mini-acceptance). This scope update installs nothing and grants no access.
 
 ## Standalone control plane — development increment, 2026-09-29
 
